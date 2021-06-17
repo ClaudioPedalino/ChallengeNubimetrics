@@ -1,3 +1,4 @@
+using ChallengeNubimetrics.Api.Middelwares;
 using ChallengeNubimetrics.Api.Registrations;
 using ChallengeNubimetrics.Application.Helpers;
 using ChallengeNubimetrics.Application.Profiles;
@@ -69,10 +70,13 @@ namespace ChallengeNubimetrics.Api
 
             SeedDatabaseInitialData.SeedUsers(userManager);
 
+            app.UseMiddleware<RequestResponseLoggingMiddleware>();
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
+
 
             app.UseHealhtChecks();
         }

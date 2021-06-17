@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ChallengeNubimetrics.Infraestructure.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20210617084527_init")]
+    [Migration("20210617161237_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

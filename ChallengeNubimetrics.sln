@@ -11,8 +11,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChallengeNubimetrics.Domain
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChallengeNubimetrics.Application", "ChallengeNubimetrics.Application\ChallengeNubimetrics.Application.csproj", "{D2078D77-AD6E-4AD8-A3FA-DF2BE34D0A6D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChallengeNubimetrics.Test", "ChallengeNubimetrics.Test\ChallengeNubimetrics.Test.csproj", "{2EF9BE94-16A8-4A5A-900E-81995492A7C7}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,10 +33,6 @@ Global
 		{D2078D77-AD6E-4AD8-A3FA-DF2BE34D0A6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D2078D77-AD6E-4AD8-A3FA-DF2BE34D0A6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D2078D77-AD6E-4AD8-A3FA-DF2BE34D0A6D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2EF9BE94-16A8-4A5A-900E-81995492A7C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2EF9BE94-16A8-4A5A-900E-81995492A7C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2EF9BE94-16A8-4A5A-900E-81995492A7C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2EF9BE94-16A8-4A5A-900E-81995492A7C7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

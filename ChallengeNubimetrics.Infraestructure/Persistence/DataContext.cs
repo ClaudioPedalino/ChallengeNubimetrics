@@ -6,8 +6,6 @@ namespace ChallengeNubimetrics.Infraestructure.Persistence
 {
     public class DataContext : DbContext
     {
-        private readonly UserManager<User> _userManager;
-
         public DataContext(DbContextOptions<DataContext> options) : base(options) { }
 
 
