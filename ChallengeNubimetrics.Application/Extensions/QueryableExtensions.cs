@@ -4,7 +4,7 @@ using System.Linq.Expressions;
 
 namespace ChallengeNubimetrics.Application.Extensions
 {
-    public static class IQueryableExtensions
+    public static class QueryableExtensions
     {
         public static IQueryable<T> WhereIf<T>(this IQueryable<T> query, bool should, Expression<Func<T, bool>> expression)
             => should

@@ -1,25 +1,17 @@
 using ChallengeNubimetrics.Api.Middelwares;
 using ChallengeNubimetrics.Api.Registrations;
-using ChallengeNubimetrics.Application.Helpers;
 using ChallengeNubimetrics.Application.Profiles;
+using ChallengeNubimetrics.Application.Services;
 using ChallengeNubimetrics.Domain.Entities;
 using ChallengeNubimetrics.Infraestructure.Persistence;
-using HealthChecks.UI.Client;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Hosting;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using System;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace ChallengeNubimetrics.Api
 {
@@ -43,6 +35,7 @@ namespace ChallengeNubimetrics.Api
             services.AddExternalServices(Configuration);
             services.AddRepositories(Configuration);
             services.AddServices(Configuration);
+            services.AddHostedService<PrinterHostedService>();
 
             services.AddMediatR(AppDomain.CurrentDomain.Load("ChallengeNubimetrics.Application"));
             services.AddAutoMapper(typeof(UserProfile));
@@ -77,10 +70,9 @@ namespace ChallengeNubimetrics.Api
                 endpoints.MapControllers();
             });
 
-
             app.UseHealhtChecks();
         }
 
-        
+
     }
 }

@@ -32,7 +32,7 @@ namespace ChallengeNubimetrics.Api.Controllers
         private async Task<ActionResult> CallHealthCheck(string param, IConfiguration _configuration)
         {
             using HttpClient client = new();
-            
+
             var uri = _configuration.GetValue<string>("HealthCheckUri") + param;
             HttpResponseMessage response = await client.GetAsync(uri);
             response.EnsureSuccessStatusCode();

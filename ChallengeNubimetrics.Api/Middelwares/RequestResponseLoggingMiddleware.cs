@@ -26,26 +26,25 @@ namespace ChallengeNubimetrics.Api.Middelwares
             var originalBodyStream = context.Response.Body;
 
             //Create a new memory stream...
-            using (var responseBody = new MemoryStream())
-            {
-                //...and use that for the temporary response body
-                context.Response.Body = responseBody;
+            using var responseBody = new MemoryStream();
 
-                //Continue down the Middleware pipeline, eventually returning to this class
-                await _next(context);
+            //...and use that for the temporary response body
+            context.Response.Body = responseBody;
 
-                var response = await SetResponse(context.Response);
+            //Continue down the Middleware pipeline, eventually returning to this class
+            await _next(context);
 
-                var loggedRequestResponse = new LoggedRequestResponse(request, response);
+            var response = await SetResponse(context.Response);
 
-                _logger.Information(JsonConvert.SerializeObject(loggedRequestResponse, Formatting.Indented));
+            var loggedRequestResponse = new LoggedRequestResponse(request, response);
 
-                await responseBody.CopyToAsync(originalBodyStream);
-            }
+            _logger.Information(JsonConvert.SerializeObject(loggedRequestResponse, Formatting.Indented));
+
+            await responseBody.CopyToAsync(originalBodyStream);
         }
 
         private LoggedRequest SetRequest(HttpContext context)
-            => new LoggedRequest
+            => new()
             {
                 IpRequested = context.Connection.RemoteIpAddress.ToString(),
                 HttpMethod = context.Request.Method,
