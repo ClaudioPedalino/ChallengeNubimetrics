@@ -1,0 +1,178 @@
+[
+  {
+    "Id": "ARS",
+    "Symbol": "$",
+    "Description": "Peso argentino",
+    "decimal_places": 2,
+    "to_dolar": 95.3099862,
+    "Ratio": "0.01049208"
+  },
+  {
+    "Id": "BOB",
+    "Symbol": "Bs",
+    "Description": "Boliviano",
+    "decimal_places": 2,
+    "to_dolar": 6.96000004,
+    "Ratio": "0.14367816"
+  },
+  {
+    "Id": "BRL",
+    "Symbol": "R$",
+    "Description": "Real",
+    "decimal_places": 2,
+    "to_dolar": 5.0207001,
+    "Ratio": "0.19917541"
+  },
+  {
+    "Id": "CLF",
+    "Symbol": "UF",
+    "Description": "Unidad de Fomento",
+    "decimal_places": 2,
+    "to_dolar": 0.0244381,
+    "Ratio": "40.91971143"
+  },
+  {
+    "Id": "CLP",
+    "Symbol": "$",
+    "Description": "Peso Chileno",
+    "decimal_places": 0,
+    "to_dolar": 725.11057936,
+    "Ratio": "0.0013791"
+  },
+  {
+    "Id": "COP",
+    "Symbol": "$",
+    "Description": "Peso colombiano",
+    "decimal_places": 0,
+    "to_dolar": 3626.07875843,
+    "Ratio": "0.00027578"
+  },
+  {
+    "Id": "CRC",
+    "Symbol": "¢",
+    "Description": "Colones",
+    "decimal_places": 2,
+    "to_dolar": 618.65109316,
+    "Ratio": "0.00161642"
+  },
+  {
+    "Id": "CUC",
+    "Symbol": "CUC",
+    "Description": "Peso Cubano Convertible",
+    "decimal_places": 2,
+    "to_dolar": 1200.00480002,
+    "Ratio": "0.00083333"
+  },
+  {
+    "Id": "CUP",
+    "Symbol": "$",
+    "Description": "Peso Cubano",
+    "decimal_places": 2,
+    "to_dolar": 25.0,
+    "Ratio": "0.04"
+  },
+  {
+    "Id": "DOP",
+    "Symbol": "$",
+    "Description": "Peso Dominicano",
+    "decimal_places": 2,
+    "to_dolar": 57.14511029,
+    "Ratio": "0.01749931"
+  },
+  {
+    "Id": "EUR",
+    "Symbol": "€",
+    "Description": "Euro",
+    "decimal_places": 2,
+    "to_dolar": 0.8248,
+    "Ratio": "1.21241513"
+  },
+  {
+    "Id": "GTQ",
+    "Symbol": "Q",
+    "Description": "Quetzal Guatemalteco",
+    "decimal_places": 2,
+    "to_dolar": 7.74109984,
+    "Ratio": "0.12918061"
+  },
+  {
+    "Id": "HNL",
+    "Symbol": "L",
+    "Description": "Lempira",
+    "decimal_places": 0,
+    "to_dolar": 23.97180149,
+    "Ratio": "0.04171568"
+  },
+  {
+    "Id": "MXN",
+    "Symbol": "$",
+    "Description": "Peso Mexicano",
+    "decimal_places": 2,
+    "to_dolar": 20.05880037,
+    "Ratio": "0.04985343"
+  },
+  {
+    "Id": "NIO",
+    "Symbol": "C$",
+    "Description": "Córdoba",
+    "decimal_places": 0,
+    "to_dolar": 35.14099798,
+    "Ratio": "0.02845679"
+  },
+  {
+    "Id": "PAB",
+    "Symbol": "B/.",
+    "Description": "Balboa",
+    "decimal_places": 2,
+    "to_dolar": 1.0,
+    "Ratio": "1"
+  },
+  {
+    "Id": "PEN",
+    "Symbol": "S/",
+    "Description": "Soles",
+    "decimal_places": 2,
+    "to_dolar": 3.90999993,
+    "Ratio": "0.25575448"
+  },
+  {
+    "Id": "PYG",
+    "Symbol": "₲",
+    "Description": "Guaraní",
+    "decimal_places": 0,
+    "to_dolar": 6728.56950612,
+    "Ratio": "0.00014862"
+  },
+  {
+    "Id": "USD",
+    "Symbol": "U$S",
+    "Description": "Dólar",
+    "decimal_places": 2,
+    "to_dolar": 1.0,
+    "Ratio": "1"
+  },
+  {
+    "Id": "UYU",
+    "Symbol": "$",
+    "Description": "Peso Uruguayo",
+    "decimal_places": 2,
+    "to_dolar": 44.30000673,
+    "Ratio": "0.02257336"
+  },
+  {
+    "Id": "VEF",
+    "Symbol": "Bs.",
+    "Description": "Bolivar fuerte",
+    "decimal_places": 2,
+    "to_dolar": 0.0,
+    "Ratio": null
+  },
+  {
+    "Id": "VES",
+    "Symbol": "Bs.",
+    "Description": "Bolivar Soberano",
+    "decimal_places": 2,
+    "to_dolar": 0.0,
+    "Ratio": null
+  }
+]
