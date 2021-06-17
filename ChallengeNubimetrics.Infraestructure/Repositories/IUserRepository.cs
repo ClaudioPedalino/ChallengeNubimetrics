@@ -2,10 +2,8 @@
 using ChallengeNubimetrics.Infraestructure.Interfaces;
 using ChallengeNubimetrics.Infraestructure.Persistence;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace ChallengeNubimetrics.Infraestructure.Repositories

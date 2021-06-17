@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace ChallengeNubimetrics.Infraestructure.Persistence
 {
@@ -20,7 +19,7 @@ namespace ChallengeNubimetrics.Infraestructure.Persistence
 
             foreach (var user in seedUsers)
             {
-                IdentityResult result = _userManager.CreateAsync(user, testPassword).Result;
+                _ = _userManager.CreateAsync(user, testPassword).Result;
             }
         }
     }

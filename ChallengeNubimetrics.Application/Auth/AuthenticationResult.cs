@@ -1,7 +1,5 @@
 ﻿using ChallengeNubimetrics.Application.Models.Common;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace ChallengeNubimetrics.Application.Auth
 {

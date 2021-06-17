@@ -1,5 +1,4 @@
-﻿using ChallengeNubimetrics.Application.Auth;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace ChallengeNubimetrics.Application.Commands.Users
 {

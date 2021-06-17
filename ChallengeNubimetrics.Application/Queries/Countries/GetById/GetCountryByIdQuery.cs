@@ -1,11 +1,8 @@
 ﻿using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ChallengeNubimetrics.Application.Queries.Countries.GetById
 {
-    public class GetCountryByIdQuery : IRequest<GetCountryByIdResponse> 
+    public class GetCountryByIdQuery : IRequest<GetCountryByIdResponse>
     {
         public GetCountryByIdQuery(string countryId)
         {

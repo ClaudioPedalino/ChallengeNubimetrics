@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Text;
+﻿using System.Diagnostics;
 
 namespace ChallengeNubimetrics.Application.Queries.Users.GetAll
 {
@@ -13,7 +10,7 @@ namespace ChallengeNubimetrics.Application.Queries.Users.GetAll
         public string Apellido { get; set; }
         public string Email { get; set; }
 
-        
+
         private string GetDebuggerDisplay() => ToString();
     }
 }

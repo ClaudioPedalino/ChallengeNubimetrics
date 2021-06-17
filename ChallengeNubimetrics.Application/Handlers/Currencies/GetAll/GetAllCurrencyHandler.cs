@@ -1,5 +1,4 @@
 ﻿using ChallengeNubimetrics.Application.Helpers;
-using ChallengeNubimetrics.Application.Queries.Countries.GetAll;
 using ChallengeNubimetrics.Application.Queries.Currencies.GetAll;
 using ChallengeNubimetrics.Domain.Exceptions;
 using MediatR;
@@ -12,7 +11,6 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Web;

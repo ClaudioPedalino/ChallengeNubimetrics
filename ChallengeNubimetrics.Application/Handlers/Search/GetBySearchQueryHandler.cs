@@ -2,12 +2,9 @@
 using ChallengeNubimetrics.Application.Models.Search;
 using ChallengeNubimetrics.Application.Queries.Search;
 using MediatR;
-using Newtonsoft.Json;
 using Serilog;
 using System;
-using System.Collections.Generic;
 using System.Net.Http;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Web;

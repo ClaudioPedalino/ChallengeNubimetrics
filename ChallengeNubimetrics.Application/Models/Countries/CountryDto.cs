@@ -8,13 +8,13 @@ namespace ChallengeNubimetrics.Application.Models.Countries
         public string Id { get; set; }
         public string Name { get; set; }
         public string Locale { get; set; }
-        
+
         [JsonProperty("currency_id")]
         public string CurrencyId { get; set; }
-        
+
         [JsonProperty("decimal_separator")]
         public string DecimalSeparator { get; set; }
-        
+
         [JsonProperty("thousands_separator")]
         public string ThousandsSeparator { get; set; }
 

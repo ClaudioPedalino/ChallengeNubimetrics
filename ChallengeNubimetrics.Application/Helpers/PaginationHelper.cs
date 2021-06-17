@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ChallengeNubimetrics.Application.Helpers
+﻿namespace ChallengeNubimetrics.Application.Helpers
 {
     public static class PaginationHelper
     {

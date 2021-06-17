@@ -1,8 +1,6 @@
 ﻿using ChallengeNubimetrics.Domain.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
 
 namespace ChallengeNubimetrics.Infraestructure.Persistence
 {

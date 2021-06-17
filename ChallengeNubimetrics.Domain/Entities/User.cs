@@ -13,5 +13,5 @@ namespace ChallengeNubimetrics.Domain.Entities
         public string DeleteBy { get; set; }
     }
 
-    
+
 }

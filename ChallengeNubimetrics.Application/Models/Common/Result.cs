@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ChallengeNubimetrics.Application.Models.Common
+﻿namespace ChallengeNubimetrics.Application.Models.Common
 {
     public class Result
     {

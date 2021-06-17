@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ChallengeNubimetrics.Domain.Exceptions
+﻿namespace ChallengeNubimetrics.Domain.Exceptions
 {
     public class MeliServiceException : CustomApplicationException
     {

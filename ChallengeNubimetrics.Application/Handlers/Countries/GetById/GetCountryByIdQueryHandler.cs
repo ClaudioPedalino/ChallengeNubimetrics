@@ -38,7 +38,7 @@ namespace ChallengeNubimetrics.Application.Handlers.Countries.GetById
 
             var jsonResult = await serviceResult.Content.ReadAsStringAsync();
             var response = JsonConvert.DeserializeObject<CountryDto>(jsonResult);
-            
+
             return new GetCountryByIdResponse() { Data = response };
         }
 

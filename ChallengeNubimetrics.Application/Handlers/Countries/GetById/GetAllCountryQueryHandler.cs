@@ -1,15 +1,12 @@
-﻿using ChallengeNubimetrics.Application.Models.Countries;
-using ChallengeNubimetrics.Application.Queries.Countries.GetAll;
+﻿using ChallengeNubimetrics.Application.Queries.Countries.GetAll;
 using ChallengeNubimetrics.Domain.Exceptions;
 using MediatR;
 using Newtonsoft.Json;
 using Serilog;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
