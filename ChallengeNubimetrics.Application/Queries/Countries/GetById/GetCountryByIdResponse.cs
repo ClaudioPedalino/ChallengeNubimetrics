@@ -1,7 +1,9 @@
-﻿namespace ChallengeNubimetrics.Application.Queries.Countries.GetById
+﻿using ChallengeNubimetrics.Application.Models.Countries;
+
+namespace ChallengeNubimetrics.Application.Queries.Countries.GetById
 {
     public class GetCountryByIdResponse
     {
-        public object Data { get; set; }
+        public CountryDto Data { get; set; }
     }
 }

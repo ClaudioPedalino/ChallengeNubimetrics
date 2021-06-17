@@ -1,7 +1,9 @@
-﻿namespace ChallengeNubimetrics.Application.Queries.Search
+﻿using ChallengeNubimetrics.Application.Models.Search;
+
+namespace ChallengeNubimetrics.Application.Queries.Search
 {
     public class GetBySearchResponse
     {
-        public object Data { get; set; }
+        public SearchDto Data { get; set; }
     }
 }

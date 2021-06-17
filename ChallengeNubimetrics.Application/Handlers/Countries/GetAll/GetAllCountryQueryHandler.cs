@@ -10,7 +10,7 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace ChallengeNubimetrics.Application.Handlers.Countries.GetById
+namespace ChallengeNubimetrics.Application.Handlers.Countries.GetAll
 {
     public class GetAllCountryQueryHandler : IRequestHandler<GetAllCountryQuery, IEnumerable<GetAllCountryResponse>>
     {

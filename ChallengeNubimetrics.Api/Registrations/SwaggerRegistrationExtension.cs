@@ -11,7 +11,7 @@ namespace ChallengeNubimetrics.Api.Registrations
         {
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "ChallengeNubimetrics.Api", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "API Challenge Nubimetrics", Version = "v1" });
 
                 c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
                 {
@@ -44,12 +44,12 @@ namespace ChallengeNubimetrics.Api.Registrations
         }
 
 
-        public static IApplicationBuilder UseSwaggerDocumentation(this IApplicationBuilder app)
+        public static IApplicationBuilder UseSwagger(this IApplicationBuilder app)
         {
-            app.UseSwagger();
+            SwaggerBuilderExtensions.UseSwagger(app);
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Facturación Electrónica Latam");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "API Challenge Nubimetrics");
             });
 
             return app;

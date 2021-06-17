@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31321.278
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChallengeNubimetrics.Api", "ChallengeNubimetrics.Api\ChallengeNubimetrics.Api.csproj", "{D61CEEF6-C25D-4011-9C9E-C26EE2BC0B4F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChallengeNubimetrics.Api", "ChallengeNubimetrics.Api\ChallengeNubimetrics.Api.csproj", "{D61CEEF6-C25D-4011-9C9E-C26EE2BC0B4F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChallengeNubimetrics.Infraestructure", "ChallengeNubimetrics.Infraestructure\ChallengeNubimetrics.Infraestructure.csproj", "{329867DD-358E-404B-B3E8-796DF8FE2018}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChallengeNubimetrics.Infraestructure", "ChallengeNubimetrics.Infraestructure\ChallengeNubimetrics.Infraestructure.csproj", "{329867DD-358E-404B-B3E8-796DF8FE2018}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChallengeNubimetrics.Domain", "ChallengeNubimetrics.Domain\ChallengeNubimetrics.Domain.csproj", "{04FD21CA-3495-484C-858B-FE2414E0BA3A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChallengeNubimetrics.Domain", "ChallengeNubimetrics.Domain\ChallengeNubimetrics.Domain.csproj", "{04FD21CA-3495-484C-858B-FE2414E0BA3A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChallengeNubimetrics.Application", "ChallengeNubimetrics.Application\ChallengeNubimetrics.Application.csproj", "{D2078D77-AD6E-4AD8-A3FA-DF2BE34D0A6D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChallengeNubimetrics.Application", "ChallengeNubimetrics.Application\ChallengeNubimetrics.Application.csproj", "{D2078D77-AD6E-4AD8-A3FA-DF2BE34D0A6D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChallengeNubimetrics.Test", "ChallengeNubimetrics.Test\ChallengeNubimetrics.Test.csproj", "{2EF9BE94-16A8-4A5A-900E-81995492A7C7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{D2078D77-AD6E-4AD8-A3FA-DF2BE34D0A6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D2078D77-AD6E-4AD8-A3FA-DF2BE34D0A6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D2078D77-AD6E-4AD8-A3FA-DF2BE34D0A6D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2EF9BE94-16A8-4A5A-900E-81995492A7C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2EF9BE94-16A8-4A5A-900E-81995492A7C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2EF9BE94-16A8-4A5A-900E-81995492A7C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2EF9BE94-16A8-4A5A-900E-81995492A7C7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
