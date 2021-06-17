@@ -4,6 +4,8 @@ namespace ChallengeNubimetrics.Application.Models.Common
 {
     public class PaginatedResult<T> : Result
     {
+        public PaginatedResult() { }
+
         public PaginatedResult(List<T> data, int totalCount, int pageSize, int totalPages)
         {
             TotalCount = totalCount;

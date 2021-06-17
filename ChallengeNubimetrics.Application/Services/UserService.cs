@@ -2,6 +2,7 @@
 using ChallengeNubimetrics.Application.Auth;
 using ChallengeNubimetrics.Application.Commands.Users;
 using ChallengeNubimetrics.Application.Commands.Users.Delete;
+using ChallengeNubimetrics.Application.Extensions;
 using ChallengeNubimetrics.Application.Helpers;
 using ChallengeNubimetrics.Application.Interfaces;
 using ChallengeNubimetrics.Application.Models.Common;
@@ -10,6 +11,7 @@ using ChallengeNubimetrics.Domain.Entities;
 using ChallengeNubimetrics.Domain.Exceptions;
 using ChallengeNubimetrics.Infraestructure.Interfaces;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System;
@@ -48,12 +50,31 @@ namespace ChallengeNubimetrics.Application.Services
         }
 
 
-        public async Task<IEnumerable<GetAllUserResponse>> GetAllAsync()
+        public async Task<PaginatedResult<GetAllUserResponse>> GetAllAsync(GetAllUsersQuery request)
         {
-            var users = await _userRepository.GetAllAsync();
-            var response = _mapper.Map<IEnumerable<GetAllUserResponse>>(users)
-                .OrderBy(x => x.Email);
-            return response;
+            var users = _userRepository.GetAll();
+
+            var total = await users.CountAsync();
+
+            users = users
+                .WhereIf(!string.IsNullOrWhiteSpace(request.FirstName), x => x.FirstName.Contains(request.FirstName))
+                .WhereIf(!string.IsNullOrWhiteSpace(request.LastName), x => x.LastName.Contains(request.LastName))
+                .WhereIf(!string.IsNullOrWhiteSpace(request.Email), x => x.Email.Contains(request.Email));
+
+            var paginatedResult = await users
+                .Skip((request.PageNumber - 1) * request.PageSize)
+                .OrderBy(x => x.Email)
+                .Take(request.PageSize)
+                .ToListAsync();
+
+            var response = _mapper.Map<List<GetAllUserResponse>>(paginatedResult);
+
+            return new PaginatedResult<GetAllUserResponse>()
+                .Success(
+                    totalCount: total,
+                    pageSize: request.PageSize,
+                    totalPages: (total / request.PageSize) + 1,
+                    data: response);
         }
 
 

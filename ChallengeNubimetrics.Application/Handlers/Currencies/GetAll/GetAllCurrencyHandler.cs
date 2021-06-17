@@ -1,4 +1,5 @@
 ﻿using ChallengeNubimetrics.Application.Helpers;
+using ChallengeNubimetrics.Application.Helpers.Enum;
 using ChallengeNubimetrics.Application.Queries.Currencies.GetAll;
 using ChallengeNubimetrics.Domain.Exceptions;
 using MediatR;
@@ -100,6 +101,7 @@ namespace ChallengeNubimetrics.Application.Handlers.Currencies.GetAll
             Directory.GetCurrentDirectory()
             + _configuration.GetSection("LoggingFile:CsvFilePath").Value
             + FileFormatDictionary.FileFormats[FileFormat.CSV];
+
 
         private async Task<List<GetAllCurrencyResponse>> GetCurrenciesFromMeliService(HttpClient currencyServiceClient)
         {

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using ChallengeNubimetrics.Application.Helpers.Enum;
+using System.Collections.Generic;
 
 namespace ChallengeNubimetrics.Application.Helpers
 {
@@ -10,11 +11,4 @@ namespace ChallengeNubimetrics.Application.Helpers
             {FileFormat.CSV, ".csv" }
         };
     }
-
-    public enum FileFormat
-    {
-        JSON = 1,
-        CSV = 2
-    }
-
 }

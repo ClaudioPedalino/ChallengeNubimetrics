@@ -4,7 +4,7 @@ cd ../ChallengeNubimetrics.Api
 ECHO ==============================
 %@%@[104m Starting Api ChallengeNubimetrics
 ECHO ==============================
-dotnet build && start http://localhost:1969/swagger && dotnet run 
+dotnet build && start http://localhost:8080/swagger && dotnet run 
 PAUSE
 
 

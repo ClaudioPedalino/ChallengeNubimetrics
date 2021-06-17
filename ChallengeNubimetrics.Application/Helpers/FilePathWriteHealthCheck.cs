@@ -10,12 +10,12 @@ namespace ChallengeNubimetrics.Application.Helpers
     public class FilePathWriteHealthCheck : IHealthCheck
     {
         private readonly string _filePath;
-        private IReadOnlyDictionary<string, object> _HealthCheckData;
+        private readonly IReadOnlyDictionary<string, object> _healthCheckData;
 
         public FilePathWriteHealthCheck(string filePath)
         {
             _filePath = filePath;
-            _HealthCheckData = new Dictionary<string, object>
+            _healthCheckData = new Dictionary<string, object>
             {
                 {"filePath", _filePath }
             };
@@ -36,8 +36,8 @@ namespace ChallengeNubimetrics.Application.Helpers
             {
                 return context.Registration.FailureStatus switch
                 {
-                    HealthStatus.Degraded => Task.FromResult(HealthCheckResult.Degraded($"Issues writing to file path", ex, _HealthCheckData)),
-                    _ => Task.FromResult(HealthCheckResult.Unhealthy($"Issues writing to file path", ex, _HealthCheckData)),
+                    HealthStatus.Degraded => Task.FromResult(HealthCheckResult.Degraded($"Issues writing to file path", ex, _healthCheckData)),
+                    _ => Task.FromResult(HealthCheckResult.Unhealthy($"Issues writing to file path", ex, _healthCheckData)),
                 };
             }
         }

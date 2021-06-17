@@ -2,7 +2,6 @@
 using ChallengeNubimetrics.Application.Models.Search;
 using ChallengeNubimetrics.Application.Queries.Search;
 using MediatR;
-using Serilog;
 using System;
 using System.Net.Http;
 using System.Threading;
@@ -14,12 +13,10 @@ namespace ChallengeNubimetrics.Application.Handlers.Search
     public class GetBySearchQueryHandler : IRequestHandler<GetBySearchQuery, GetBySearchResponse>
     {
         private readonly IHttpClientFactory _httpFactory;
-        private readonly ILogger _logger;
 
-        public GetBySearchQueryHandler(IHttpClientFactory httpFactory, ILogger logger)
+        public GetBySearchQueryHandler(IHttpClientFactory httpFactory)
         {
             _httpFactory = httpFactory;
-            _logger = logger;
         }
 
         public async Task<GetBySearchResponse> Handle(GetBySearchQuery request, CancellationToken cancellationToken)

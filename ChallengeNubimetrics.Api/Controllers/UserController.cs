@@ -8,7 +8,6 @@ using ChallengeNubimetrics.Application.Queries.Users.GetAll;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace ChallengeNubimetrics.Api.Controllers
@@ -28,14 +27,14 @@ namespace ChallengeNubimetrics.Api.Controllers
 
 
         [HttpGet("users")]
-        [ProducesResponseType(typeof(IEnumerable<GetAllUserResponse>), 200)]
+        [ProducesResponseType(typeof(PaginatedResult<GetAllUserResponse>), 200)]
         [ProducesResponseType(typeof(BadRequestResult), 400)]
         [ProducesResponseType(typeof(UnauthorizedObjectResult), 401)]
         [ProducesResponseType(typeof(Result), 500)]
         [Authorize]
-        public async Task<IActionResult> GetAllUsers()
+        public async Task<IActionResult> GetAllUsers([FromQuery] GetAllUsersQuery request)
         {
-            return Ok(await _userService.GetAllAsync());
+            return Ok(await _userService.GetAllAsync(request));
         }
 
 
