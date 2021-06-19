@@ -2,7 +2,7 @@
 {
     public record Result
     {
-        public Result()
+        protected Result()
         {
             HasErrors = false;
             Message = string.Empty;
@@ -12,13 +12,13 @@
         public virtual string Message { get; set; }
 
 
-        public Result Success(string message)
+        public static Result Success(string message)
             => new Result() { HasErrors = false, Message = message };
 
-        public Result Error(string message)
+        public static Result Error(string message)
             => new Result() { HasErrors = true, Message = message };
 
-        public Result NotFound()
+        public static Result NotFound()
             => new Result() { HasErrors = true, Message = "No se encontró un registro con la información enviada" };
     }
 }

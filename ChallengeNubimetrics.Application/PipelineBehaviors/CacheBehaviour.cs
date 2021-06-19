@@ -1,4 +1,5 @@
-﻿using ChallengeNubimetrics.Application.Interfaces;
+﻿using ChallengeNubimetrics.Application.Helpers;
+using ChallengeNubimetrics.Application.Interfaces;
 using MediatR;
 using Microsoft.Extensions.Caching.Memory;
 using System;
@@ -9,12 +10,12 @@ using System.Threading.Tasks;
 
 namespace ChallengeNubimetrics.Application.PipelineBehaviors
 {
-    public class CachingBehaviour<TRquest, TResponse> : IPipelineBehavior<TRquest, TResponse>
+    public class CacheBehaviour<TRquest, TResponse> : IPipelineBehavior<TRquest, TResponse>
         where TRquest : ICacheable
     {
         private readonly IMemoryCache _cache;
 
-        public CachingBehaviour(IMemoryCache cache)
+        public CacheBehaviour(IMemoryCache cache)
         {
             _cache = cache;
         }
@@ -23,25 +24,28 @@ namespace ChallengeNubimetrics.Application.PipelineBehaviors
                                             CancellationToken cancellationToken,
                                             RequestHandlerDelegate<TResponse> next)
         {
-            Console.BackgroundColor = ConsoleColor.Red;
             var requestName = request.GetType();
-            Console.WriteLine($"Caching {requestName} <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>");
-
+            
 
             /// If cached
             TResponse response;
             if (_cache.TryGetValue(request.CacheKey, out response))
             {
-                Console.BackgroundColor = ConsoleColor.Blue;
-                Console.WriteLine($"Returned cached value for {requestName}");
+                Printer.Print($"Returned cached value for { requestName}", backgroundColor: ConsoleColor.Blue);
                 return response;
             }
 
             /// If not, caching
-            Console.BackgroundColor = ConsoleColor.Cyan;
-            Console.WriteLine($"{requestName} CACHE KEY: {request.CacheKey} is not cached, executing request");
+            MemoryCacheEntryOptions cacheExpirationOptions = new()
+            {
+                AbsoluteExpiration = DateTime.Now.AddMinutes(10),
+                Priority = CacheItemPriority.Normal
+            };
+
+            Printer.Print($"Caching {requestName}", backgroundColor: ConsoleColor.Red);
+            Printer.Print($"{requestName} CACHE KEY: {request.CacheKey} is not cached, executing request", backgroundColor: ConsoleColor.Cyan);
             response = await next();
-            _cache.Set(request.CacheKey, response);
+            _cache.Set(request.CacheKey, response, cacheExpirationOptions);
             return response;
         }
     }

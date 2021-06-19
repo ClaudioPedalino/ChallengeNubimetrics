@@ -47,8 +47,8 @@ namespace ChallengeNubimetrics.Api.Controllers
             {
                 return StatusCode(500, 
                     !string.IsNullOrWhiteSpace(ex.Message) 
-                    ? new Result().Error(ex.Message)
-                    : new Result().Error("Hubo un problema en la api :)"));
+                    ? Result.Error(ex.Message)
+                    : Result.Error("Hubo un problema en la api :)"));
             }
 
         }

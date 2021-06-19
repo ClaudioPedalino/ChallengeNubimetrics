@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using ChallengeNubimetrics.Application.Helpers;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
 using System.Threading;
@@ -18,14 +19,12 @@ namespace ChallengeNubimetrics.Application.Services
 
         private void Execute(object state)
         {
-            Console.BackgroundColor = ConsoleColor.Green;
-            Console.WriteLine("Remember drink some water - hosted service :D");
-            Console.ResetColor();
+            Printer.Print("Remember drink some water - hosted service :D", backgroundColor: ConsoleColor.Green);
         }
 
         public Task StartAsync(CancellationToken cancellationToken)
         {
-            _timer = new Timer(Execute, null, TimeSpan.Zero, TimeSpan.FromSeconds(5));
+            _timer = new Timer(Execute, null, TimeSpan.Zero, TimeSpan.FromSeconds(15));
             return Task.CompletedTask;
         }
 

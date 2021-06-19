@@ -69,7 +69,7 @@ namespace ChallengeNubimetrics.Application.Services
 
             var response = _mapper.Map<List<GetAllUserResponse>>(paginatedResult);
 
-            return new PaginatedResult<GetAllUserResponse>()
+            return PaginatedResult<GetAllUserResponse>
                 .Success(
                     totalCount: total,
                     pageSize: request.PageSize,
@@ -118,7 +118,7 @@ namespace ChallengeNubimetrics.Application.Services
         {
             var requester = await _userStore.FindByIdAsync(request.GetUser(), new CancellationToken());
             if (requester == null || requester.DeleteAt != null)
-                return new Result().Error(new UserDoesNotExistException().Message);
+                return Result.Error(new UserDoesNotExistException().Message);
 
             var user = await _userManager.FindByEmailAsync(request.Email);
             if (user == null)
@@ -138,7 +138,7 @@ namespace ChallengeNubimetrics.Application.Services
             user.DeleteBy = requester.UserName;
             await _userRepository.UpdateAsync(user);
 
-            return new Result() { HasErrors = false, Message = $"User {user.UserName} deleted succesfully" };
+            return Result.Success($"User {user.UserName} deleted succesfully");
         }
 
 

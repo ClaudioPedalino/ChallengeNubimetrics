@@ -4,9 +4,9 @@ namespace ChallengeNubimetrics.Application.Models.Common
 {
     public record PaginatedResult<T> : Result
     {
-        public PaginatedResult() { }
+        protected PaginatedResult() { }
 
-        public PaginatedResult(List<T> data, int totalCount, int pageSize, int totalPages)
+        protected PaginatedResult(List<T> data, int totalCount, int pageSize, int totalPages)
         {
             TotalCount = totalCount;
             PageSize = pageSize;
@@ -14,7 +14,7 @@ namespace ChallengeNubimetrics.Application.Models.Common
             Data = data;
         }
 
-        public PaginatedResult(List<T> data)
+        protected PaginatedResult(List<T> data)
         {
             TotalCount = 0;
             PageSize = 0;
@@ -29,13 +29,13 @@ namespace ChallengeNubimetrics.Application.Models.Common
         public List<T> Data { get; set; }
 
 
-        public PaginatedResult<T> Success(int totalCount, int pageSize, int totalPages, List<T> data = default)
+        public static PaginatedResult<T> Success(int totalCount, int pageSize, int totalPages, List<T> data = default)
            => new PaginatedResult<T>(data, totalCount, pageSize, totalPages) { HasErrors = false, Data = data };
 
-        public PaginatedResult<T> Error(string message, List<T> data = default)
+        public static PaginatedResult<T> Error(string message, List<T> data = default)
             => new PaginatedResult<T>(data) { HasErrors = true, Message = message };
 
-        public PaginatedResult<T> NotFound(List<T> data = default)
+        public static PaginatedResult<T> NotFound(List<T> data = default)
             => new PaginatedResult<T>(data) { HasErrors = true, Message = "No se encontró un registro con la información enviada" };
     }
 }
