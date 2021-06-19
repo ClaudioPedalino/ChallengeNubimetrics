@@ -14,7 +14,7 @@ namespace ChallengeNubimetrics.Application.Interfaces
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        Task<PaginatedResult<GetAllUserResponse>> GetAllAsync(GetAllUsersQuery request);
+        Task<PaginatedResult<GetAllUserResponse>> GetAllAsync(GetAllUserQuery request);
 
         /// <summary>
         /// Get login bearer token to access giving user name and password

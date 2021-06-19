@@ -2,7 +2,7 @@
 
 namespace ChallengeNubimetrics.Application.Queries.Countries.GetById
 {
-    public class GetCountryByIdResponse
+    public record GetCountryByIdResponse
     {
         public CountryDto Data { get; set; }
     }

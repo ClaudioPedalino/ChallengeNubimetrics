@@ -4,7 +4,7 @@ using System.Diagnostics;
 namespace ChallengeNubimetrics.Application.Queries.Currencies.GetAll
 {
     [DebuggerDisplay("{Id} - {Description}")]
-    public class GetAllCurrencyResponse
+    public record GetAllCurrencyResponse
     {
         public string Id { get; set; }
         public string Symbol { get; set; }

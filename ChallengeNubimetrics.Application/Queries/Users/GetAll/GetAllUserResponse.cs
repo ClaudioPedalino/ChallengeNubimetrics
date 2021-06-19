@@ -3,7 +3,7 @@
 namespace ChallengeNubimetrics.Application.Queries.Users.GetAll
 {
     [DebuggerDisplay("{Email} - {Nombre} {Apellido}")]
-    public class GetAllUserResponse
+    public record GetAllUserResponse
     {
         public string Id { get; set; }
         public string Nombre { get; set; }

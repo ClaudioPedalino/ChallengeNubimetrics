@@ -1,6 +1,6 @@
 ﻿namespace ChallengeNubimetrics.Application.Models.Common
 {
-    public abstract class GetWithPagination
+    public abstract record GetWithPagination
     {
         public GetWithPagination()
         {

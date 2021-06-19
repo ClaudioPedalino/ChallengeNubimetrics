@@ -1,8 +1,9 @@
-﻿using MediatR;
+﻿using ChallengeNubimetrics.Application.Interfaces;
+using MediatR;
 
 namespace ChallengeNubimetrics.Application.Queries.Countries.GetById
 {
-    public class GetCountryByIdQuery : IRequest<GetCountryByIdResponse>
+    public record GetCountryByIdQuery : IRequest<GetCountryByIdResponse>, ICacheable
     {
         public GetCountryByIdQuery(string countryId)
         {
@@ -13,5 +14,7 @@ namespace ChallengeNubimetrics.Application.Queries.Countries.GetById
         /// Iso2 Id Format
         /// </summary>
         public string CountryId { get; set; }
+
+        public string CacheKey => $"{GetType().Name}-{CountryId}";
     }
 }

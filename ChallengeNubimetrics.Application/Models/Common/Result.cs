@@ -1,6 +1,6 @@
 ﻿namespace ChallengeNubimetrics.Application.Models.Common
 {
-    public class Result
+    public record Result
     {
         public Result()
         {

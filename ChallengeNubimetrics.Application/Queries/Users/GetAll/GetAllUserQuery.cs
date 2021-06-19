@@ -1,8 +1,9 @@
-﻿using ChallengeNubimetrics.Application.Models.Common;
+﻿using ChallengeNubimetrics.Application.Interfaces;
+using ChallengeNubimetrics.Application.Models.Common;
 
 namespace ChallengeNubimetrics.Application.Queries.Users.GetAll
 {
-    public class GetAllUsersQuery : GetWithPagination
+    public record GetAllUserQuery : GetWithPagination
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }

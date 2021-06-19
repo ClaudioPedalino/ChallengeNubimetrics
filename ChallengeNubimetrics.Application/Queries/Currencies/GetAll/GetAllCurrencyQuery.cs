@@ -1,9 +1,16 @@
-﻿using MediatR;
+﻿using ChallengeNubimetrics.Application.Interfaces;
+using MediatR;
 using System.Collections.Generic;
 
 namespace ChallengeNubimetrics.Application.Queries.Currencies.GetAll
 {
-    public class GetAllCurrencyQuery : IRequest<IEnumerable<GetAllCurrencyResponse>>
+    public record GetAllCurrencyQuery : IRequest<IEnumerable<GetAllCurrencyResponse>>, ICacheable
     {
+        public GetAllCurrencyQuery()
+        {
+
+        }
+
+        public string CacheKey => $"{GetType().Name}";
     }
 }

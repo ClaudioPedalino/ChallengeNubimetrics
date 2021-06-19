@@ -2,7 +2,7 @@
 
 namespace ChallengeNubimetrics.Application.Queries.Countries.GetAll
 {
-    public class GetAllCountryResponse
+    public record GetAllCountryResponse
     {
         public string Id { get; set; }
         public string Name { get; set; }

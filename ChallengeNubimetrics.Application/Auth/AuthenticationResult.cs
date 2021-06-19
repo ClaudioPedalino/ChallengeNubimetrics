@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace ChallengeNubimetrics.Application.Auth
 {
-    public class AuthenticationResult : Result
+    public record AuthenticationResult : Result
     {
         public string Token { get; set; }
         public IEnumerable<string> ErrorMessages { get; set; }

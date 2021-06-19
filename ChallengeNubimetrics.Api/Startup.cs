@@ -46,10 +46,9 @@ namespace ChallengeNubimetrics.Api
 
             services.AddAutoMapper(typeof(UserProfile));
 
-            services.AddControllers();
             services.AddSwagger();
 
-            //services.AddHealthCheck(Configuration);
+            ///services.AddHealthCheck(Configuration);
         }
 
 
@@ -69,14 +68,14 @@ namespace ChallengeNubimetrics.Api
 
             SeedDatabaseInitialData.SeedUsers(userManager);
 
-            //app.UseMiddleware<RequestResponseLoggingMiddleware>();
+            ///app.UseMiddleware<RequestResponseLoggingMiddleware>();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
 
-            //app.UseHealhtChecks();
+            ///app.UseHealhtChecks();
         }
 
 

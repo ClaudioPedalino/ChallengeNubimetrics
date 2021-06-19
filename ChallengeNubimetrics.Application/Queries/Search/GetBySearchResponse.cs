@@ -2,7 +2,7 @@
 
 namespace ChallengeNubimetrics.Application.Queries.Search
 {
-    public class GetBySearchResponse
+    public record GetBySearchResponse
     {
         public SearchDto Data { get; set; }
     }

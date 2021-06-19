@@ -2,7 +2,7 @@
 
 namespace ChallengeNubimetrics.Application.Models.Common
 {
-    public class PaginatedResult<T> : Result
+    public record PaginatedResult<T> : Result
     {
         public PaginatedResult() { }
 

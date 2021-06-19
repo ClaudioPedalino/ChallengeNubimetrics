@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -37,7 +38,20 @@ namespace ChallengeNubimetrics.Api.Controllers
         [ProducesResponseType(typeof(Result), 500)]
         [Authorize]
         public async Task<IActionResult> GetAll()
-            => Ok(await _mediator.Send(new GetAllCountryQuery()));
+        {
+            try
+            {
+                return Ok(await _mediator.Send(new GetAllCountryQuery()));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, 
+                    !string.IsNullOrWhiteSpace(ex.Message) 
+                    ? new Result().Error(ex.Message)
+                    : new Result().Error("Hubo un problema en la api :)"));
+            }
+
+        }
 
 
         [HttpGet("paises/{paisId}")]

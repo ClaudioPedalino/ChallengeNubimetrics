@@ -3,7 +3,7 @@ using System;
 
 namespace ChallengeNubimetrics.Application.Queries.Currencies.GetAll
 {
-    public class GetCurrencyConversionById
+    public record GetCurrencyConversionById
     {
         [JsonProperty("currency_base")]
         public string CurrencyBase { get; set; }

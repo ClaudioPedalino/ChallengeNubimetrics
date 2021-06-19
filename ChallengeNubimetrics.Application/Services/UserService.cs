@@ -50,7 +50,7 @@ namespace ChallengeNubimetrics.Application.Services
         }
 
 
-        public async Task<PaginatedResult<GetAllUserResponse>> GetAllAsync(GetAllUsersQuery request)
+        public async Task<PaginatedResult<GetAllUserResponse>> GetAllAsync(GetAllUserQuery request)
         {
             var users = _userRepository.GetAll();
 

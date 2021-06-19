@@ -3,7 +3,7 @@ using MediatR;
 
 namespace ChallengeNubimetrics.Application.Queries.Search
 {
-    public class GetBySearchQuery : IRequest<GetBySearchResponse>, ICacheable
+    public record GetBySearchQuery : IRequest<GetBySearchResponse>, ICacheable
     {
         public GetBySearchQuery(string search)
         {
@@ -14,4 +14,5 @@ namespace ChallengeNubimetrics.Application.Queries.Search
 
         public string CacheKey => $"{GetType().Name}-{Search}";
     }
+
 }

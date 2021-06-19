@@ -32,7 +32,7 @@ namespace ChallengeNubimetrics.Api.Controllers
         [ProducesResponseType(typeof(UnauthorizedObjectResult), 401)]
         [ProducesResponseType(typeof(Result), 500)]
         [Authorize]
-        public async Task<IActionResult> GetAllUsers([FromQuery] GetAllUsersQuery request)
+        public async Task<IActionResult> GetAllUsers([FromQuery] GetAllUserQuery request)
         {
             return Ok(await _userService.GetAllAsync(request));
         }
