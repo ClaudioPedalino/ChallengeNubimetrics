@@ -1,6 +1,8 @@
 using ChallengeNubimetrics.Api.Middelwares;
 using ChallengeNubimetrics.Api.Registrations;
+using ChallengeNubimetrics.Application.PipelineBehaviors;
 using ChallengeNubimetrics.Application.Profiles;
+using ChallengeNubimetrics.Application.Queries.Search;
 using ChallengeNubimetrics.Application.Services;
 using ChallengeNubimetrics.Domain.Entities;
 using ChallengeNubimetrics.Infraestructure.Persistence;
@@ -38,12 +40,16 @@ namespace ChallengeNubimetrics.Api
             services.AddHostedService<PrinterHostedService>();
 
             services.AddMediatR(AppDomain.CurrentDomain.Load("ChallengeNubimetrics.Application"));
+
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(LoggingBehaviour<,>));
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(CachingBehaviour<,>));
+
             services.AddAutoMapper(typeof(UserProfile));
 
             services.AddControllers();
             services.AddSwagger();
 
-            services.AddHealthCheck(Configuration);
+            //services.AddHealthCheck(Configuration);
         }
 
 
@@ -63,14 +69,14 @@ namespace ChallengeNubimetrics.Api
 
             SeedDatabaseInitialData.SeedUsers(userManager);
 
-            app.UseMiddleware<RequestResponseLoggingMiddleware>();
+            //app.UseMiddleware<RequestResponseLoggingMiddleware>();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
 
-            app.UseHealhtChecks();
+            //app.UseHealhtChecks();
         }
 
 
