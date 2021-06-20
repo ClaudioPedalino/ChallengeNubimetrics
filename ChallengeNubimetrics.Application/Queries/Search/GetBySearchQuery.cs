@@ -10,7 +10,7 @@ namespace ChallengeNubimetrics.Application.Queries.Search
             Search = search;
         }
 
-        public string Search { get; set; }
+        public string Search { get; init; }
 
         public string CacheKey => $"{GetType().Name}-{Search}";
     }

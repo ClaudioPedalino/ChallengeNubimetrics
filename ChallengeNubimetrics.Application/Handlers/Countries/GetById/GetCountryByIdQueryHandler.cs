@@ -1,10 +1,9 @@
-﻿using ChallengeNubimetrics.Application.Models.Countries;
+﻿using ChallengeNubimetrics.Application.Extensions;
+using ChallengeNubimetrics.Application.Models.Countries;
 using ChallengeNubimetrics.Application.Queries.Countries.GetById;
-using ChallengeNubimetrics.Domain.Exceptions;
 using MediatR;
 using Newtonsoft.Json;
 using Serilog;
-using System.Net;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
@@ -32,7 +31,7 @@ namespace ChallengeNubimetrics.Application.Handlers.Countries.GetById
 
             if (!serviceResult.IsSuccessStatusCode)
             {
-                ExecuteLogging(url, serviceResult);
+                serviceResult.ExecuteMeliLogging(_logger, client.BaseAddress.ToString());
                 return new GetCountryByIdResponse();
             }
 
@@ -42,12 +41,5 @@ namespace ChallengeNubimetrics.Application.Handlers.Countries.GetById
             return new GetCountryByIdResponse() { Data = response };
         }
 
-        private void ExecuteLogging(string url, HttpResponseMessage serviceResult)
-        {
-            if (serviceResult.StatusCode == HttpStatusCode.NotFound)
-                _logger.Information($"[{serviceResult.StatusCode}] {new MeliServiceException(url).Message}");
-            else
-                _logger.Error($"[{serviceResult.StatusCode}] {new MeliServiceException(url).Message}");
-        }
     }
 }

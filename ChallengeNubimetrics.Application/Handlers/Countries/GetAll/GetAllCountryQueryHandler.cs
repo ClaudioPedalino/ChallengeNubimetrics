@@ -1,14 +1,10 @@
-﻿using ChallengeNubimetrics.Application.Queries.Countries.GetAll;
-using ChallengeNubimetrics.Domain.Exceptions;
+﻿using ChallengeNubimetrics.Application.Extensions;
+using ChallengeNubimetrics.Application.Queries.Countries.GetAll;
 using MediatR;
 using Newtonsoft.Json;
-using Polly;
-using Polly.Retry;
 using Serilog;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
@@ -35,13 +31,11 @@ namespace ChallengeNubimetrics.Application.Handlers.Countries.GetAll
         {
             var client = _httpFactory.CreateClient("MELI_CountriesServiceUrl");
 
-             using var serviceResult = await client.GetAsync(client.BaseAddress);
-            
+            using var serviceResult = await client.GetAsync(client.BaseAddress);
+
             if (!serviceResult.IsSuccessStatusCode)
-            {
-                ExecuteLogging(client.BaseAddress.ToString(), serviceResult);
-                throw new CustomApplicationException($":(  Problems into => {client.BaseAddress}");
-            }
+                serviceResult.ExecuteMeliLogging(_logger, client.BaseAddress.ToString(), throwEx: true);
+
 
             var jsonResult = await serviceResult.Content.ReadAsStringAsync();
             var response = JsonConvert.DeserializeObject<List<GetAllCountryResponse>>(jsonResult);
@@ -67,13 +61,6 @@ namespace ChallengeNubimetrics.Application.Handlers.Countries.GetAll
             ///});
             #endregion
         }
-
-        private void ExecuteLogging(string url, HttpResponseMessage serviceResult)
-        {
-            if (serviceResult.StatusCode == HttpStatusCode.NotFound)
-                _logger.Information($"[{serviceResult.StatusCode}] {new MeliServiceException(url).Message}");
-            else
-                _logger.Error($"[{serviceResult.StatusCode}] {new MeliServiceException(url).Message}");
-        }
     }
+
 }

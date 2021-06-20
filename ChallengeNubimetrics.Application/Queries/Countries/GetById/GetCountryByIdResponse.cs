@@ -4,6 +4,6 @@ namespace ChallengeNubimetrics.Application.Queries.Countries.GetById
 {
     public record GetCountryByIdResponse
     {
-        public CountryDto Data { get; set; }
+        public CountryDto Data { get; init; }
     }
 }

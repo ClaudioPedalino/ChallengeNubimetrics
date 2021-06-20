@@ -2,6 +2,7 @@
 using ChallengeNubimetrics.Application.Models.Search;
 using ChallengeNubimetrics.Application.Queries.Search;
 using MediatR;
+using Serilog;
 using System;
 using System.Net.Http;
 using System.Threading;
@@ -13,10 +14,12 @@ namespace ChallengeNubimetrics.Application.Handlers.Search
     public class GetBySearchQueryHandler : IRequestHandler<GetBySearchQuery, GetBySearchResponse>
     {
         private readonly IHttpClientFactory _httpFactory;
+        private readonly ILogger _logger;
 
-        public GetBySearchQueryHandler(IHttpClientFactory httpFactory)
+        public GetBySearchQueryHandler(IHttpClientFactory httpFactory, ILogger logger)
         {
             _httpFactory = httpFactory;
+            _logger = logger;
         }
 
         public async Task<GetBySearchResponse> Handle(GetBySearchQuery request, CancellationToken cancellationToken)
@@ -27,9 +30,7 @@ namespace ChallengeNubimetrics.Application.Handlers.Search
             using HttpResponseMessage serviceResult = await client.GetAsync(url);
 
             if (!serviceResult.IsSuccessStatusCode)
-            {
-                return new GetBySearchResponse();
-            }
+                serviceResult.ExecuteMeliLogging(_logger, client.BaseAddress.ToString());
 
             var response = await serviceResult.ReadResponse<SearchDto>();
 

@@ -8,7 +8,7 @@
             PageSize = 10;
         }
 
-        public virtual int PageNumber { get; set; }
-        public virtual int PageSize { get; set; }
+        public virtual int PageNumber { get; init; }
+        public virtual int PageSize { get; init; }
     }
 }

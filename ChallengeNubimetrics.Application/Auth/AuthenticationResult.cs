@@ -5,7 +5,7 @@ namespace ChallengeNubimetrics.Application.Auth
 {
     public record AuthenticationResult : Result
     {
-        public string Token { get; set; }
-        public IEnumerable<string> ErrorMessages { get; set; }
+        public string Token { get; init; }
+        public IEnumerable<string> ErrorMessages { get; init; }
     }
 }

@@ -1,7 +1,7 @@
-﻿using ChallengeNubimetrics.Application.Helpers;
+﻿using ChallengeNubimetrics.Application.Extensions;
+using ChallengeNubimetrics.Application.Helpers;
 using ChallengeNubimetrics.Application.Helpers.Enum;
 using ChallengeNubimetrics.Application.Queries.Currencies.GetAll;
-using ChallengeNubimetrics.Domain.Exceptions;
 using MediatR;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
@@ -10,7 +10,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Net;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
@@ -84,15 +83,12 @@ namespace ChallengeNubimetrics.Application.Handlers.Currencies.GetAll
                 using var conversionServiceResult = await conversionServiceClient.GetAsync(url);
 
                 if (!conversionServiceResult.IsSuccessStatusCode)
-                {
-                    ExecuteLogging(url, conversionServiceResult);
-                }
+                    conversionServiceResult.ExecuteMeliLogging(_logger, url);
 
                 var jsonResult = await conversionServiceResult.Content.ReadAsStringAsync();
                 var conversionResult = JsonConvert.DeserializeObject<GetCurrencyConversionById>(jsonResult);
 
-                currency.ToDolar = conversionResult.InvRate != default ? Convert.ToDecimal(conversionResult.InvRate) : default;
-                currency.Ratio = conversionResult.Ratio != default ? conversionResult.Ratio.ToString() : default;
+                currency.UpdateDolarPrice(conversionResult.InvRate, conversionResult.Ratio.ToString());
             }
         }
 
@@ -108,7 +104,7 @@ namespace ChallengeNubimetrics.Application.Handlers.Currencies.GetAll
             using var currencyServiceResult = await currencyServiceClient.GetAsync(currencyServiceClient.BaseAddress);
             if (!currencyServiceResult.IsSuccessStatusCode)
             {
-                ExecuteLogging(currencyServiceClient.BaseAddress.ToString(), currencyServiceResult);
+                currencyServiceResult.ExecuteMeliLogging(_logger, currencyServiceClient.BaseAddress.ToString());
                 return new List<GetAllCurrencyResponse>();
             }
 
@@ -128,13 +124,5 @@ namespace ChallengeNubimetrics.Application.Handlers.Currencies.GetAll
             return builder.ToString();
         }
 
-
-        private void ExecuteLogging(string url, HttpResponseMessage serviceResult)
-        {
-            if (serviceResult.StatusCode == HttpStatusCode.NotFound)
-                _logger.Information($"[{serviceResult.StatusCode}] {new MeliServiceException(url).Message}");
-            else
-                _logger.Error($"[{serviceResult.StatusCode}] {new MeliServiceException(url).Message}");
-        }
     }
 }

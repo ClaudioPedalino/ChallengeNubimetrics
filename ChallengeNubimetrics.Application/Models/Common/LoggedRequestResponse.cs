@@ -12,24 +12,24 @@ namespace ChallengeNubimetrics.Application.Models.Common
             Date = DateTime.UtcNow.AddHours(-3);
         }
 
-        public Guid TraceId { get; set; }
-        public LoggedRequest Request { get; set; }
-        public LoggedResponse Response { get; set; }
-        public DateTime Date { get; set; }
+        public Guid TraceId { get; init; }
+        public LoggedRequest Request { get; init; }
+        public LoggedResponse Response { get; init; }
+        public DateTime Date { get; init; }
     }
 
     public class LoggedRequest
     {
-        public string IpRequested { get; set; }
-        public string RequestTo { get; set; }
-        public string HttpMethod { get; set; }
-        public string Path { get; set; }
-        public string QueryParams { get; set; }
+        public string IpRequested { get; init; }
+        public string RequestTo { get; init; }
+        public string HttpMethod { get; init; }
+        public string Path { get; init; }
+        public string QueryParams { get; init; }
     }
 
     public class LoggedResponse
     {
-        public int StatusCode { get; set; }
-        public string Body { get; set; }
+        public int StatusCode { get; init; }
+        public string Body { get; init; }
     }
 }

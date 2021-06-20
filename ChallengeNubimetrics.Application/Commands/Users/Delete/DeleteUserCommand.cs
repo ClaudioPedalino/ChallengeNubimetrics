@@ -11,6 +11,6 @@ namespace ChallengeNubimetrics.Application.Commands.Users.Delete
         }
 
         [EmailAddress]
-        public string Email { get; set; }
+        public string Email { get; init; }
     }
 }

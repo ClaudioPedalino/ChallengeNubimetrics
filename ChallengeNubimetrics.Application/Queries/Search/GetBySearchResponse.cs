@@ -4,6 +4,6 @@ namespace ChallengeNubimetrics.Application.Queries.Search
 {
     public record GetBySearchResponse
     {
-        public SearchDto Data { get; set; }
+        public SearchDto Data { get; init; }
     }
 }

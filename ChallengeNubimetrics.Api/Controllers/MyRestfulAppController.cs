@@ -45,8 +45,8 @@ namespace ChallengeNubimetrics.Api.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500, 
-                    !string.IsNullOrWhiteSpace(ex.Message) 
+                return StatusCode(500,
+                    !string.IsNullOrWhiteSpace(ex.Message)
                     ? Result.Error(ex.Message)
                     : Result.Error("Hubo un problema en la api :)"));
             }

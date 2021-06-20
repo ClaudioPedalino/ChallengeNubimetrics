@@ -5,41 +5,41 @@ namespace ChallengeNubimetrics.Application.Models.Countries
 {
     public class CountryDto
     {
-        public string Id { get; set; }
-        public string Name { get; set; }
-        public string Locale { get; set; }
+        public string Id { get; init; }
+        public string Name { get; init; }
+        public string Locale { get; init; }
 
         [JsonProperty("currency_id")]
-        public string CurrencyId { get; set; }
+        public string CurrencyId { get; init; }
 
         [JsonProperty("decimal_separator")]
-        public string DecimalSeparator { get; set; }
+        public string DecimalSeparator { get; init; }
 
         [JsonProperty("thousands_separator")]
-        public string ThousandsSeparator { get; set; }
+        public string ThousandsSeparator { get; init; }
 
         [JsonProperty("time_zone")]
-        public string TimeZone { get; set; }
+        public string TimeZone { get; init; }
 
         [JsonProperty("geo_information")]
-        public GeoInformationDto GeoInformation { get; set; }
-        public List<StateDto> States { get; set; }
+        public GeoInformationDto GeoInformation { get; init; }
+        public List<StateDto> States { get; init; }
     }
 
     public class GeoInformationDto
     {
-        public LocationDto Location { get; set; }
+        public LocationDto Location { get; init; }
     }
 
     public class LocationDto
     {
-        public double Latitude { get; set; }
-        public double Longitude { get; set; }
+        public double Latitude { get; init; }
+        public double Longitude { get; init; }
     }
 
     public partial class StateDto
     {
-        public string Id { get; set; }
-        public string Name { get; set; }
+        public string Id { get; init; }
+        public string Name { get; init; }
     }
 }

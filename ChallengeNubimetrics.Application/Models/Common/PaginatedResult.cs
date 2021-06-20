@@ -23,10 +23,10 @@ namespace ChallengeNubimetrics.Application.Models.Common
         }
 
 
-        public int TotalCount { get; set; }
-        public int PageSize { get; set; }
-        public int TotalPages { get; set; }
-        public List<T> Data { get; set; }
+        public int TotalCount { get; init; }
+        public int PageSize { get; init; }
+        public int TotalPages { get; init; }
+        public List<T> Data { get; init; }
 
 
         public static PaginatedResult<T> Success(int totalCount, int pageSize, int totalPages, List<T> data = default)

@@ -13,7 +13,7 @@ namespace ChallengeNubimetrics.Application.Queries.Countries.GetById
         /// <summary>
         /// Iso2 Id Format
         /// </summary>
-        public string CountryId { get; set; }
+        public string CountryId { get; init; }
 
         public string CacheKey => $"{GetType().Name}-{CountryId}";
     }

@@ -1,4 +1,3 @@
-using ChallengeNubimetrics.Api.Middelwares;
 using ChallengeNubimetrics.Api.Registrations;
 using ChallengeNubimetrics.Application.PipelineBehaviors;
 using ChallengeNubimetrics.Application.Profiles;
@@ -37,7 +36,7 @@ namespace ChallengeNubimetrics.Api
             services.AddExternalServices(Configuration);
             services.AddRepositories(Configuration);
             services.AddServices(Configuration);
-            
+
             services.AddHostedService<PrinterHostedService>();
             services.AddHostedService<CacheHostedService>();
 
