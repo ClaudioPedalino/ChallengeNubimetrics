@@ -37,13 +37,13 @@ namespace ChallengeNubimetrics.Api
             services.AddRepositories(Configuration);
             services.AddServices(Configuration);
 
-            services.AddHostedService<PrinterHostedService>();
-            services.AddHostedService<CacheHostedService>();
+            //services.AddHostedService<PrinterHostedService>();
+            //services.AddHostedService<CacheHostedService>();
 
             services.AddMediatR(AppDomain.CurrentDomain.Load("ChallengeNubimetrics.Application"));
 
-            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(LoggingBehaviour<,>));
-            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(CacheBehaviour<,>));
+            //services.AddTransient(typeof(IPipelineBehavior<,>), typeof(LoggingBehaviour<,>));
+            //services.AddTransient(typeof(IPipelineBehavior<,>), typeof(CacheBehaviour<,>));
 
             services.AddAutoMapper(typeof(UserProfile));
 

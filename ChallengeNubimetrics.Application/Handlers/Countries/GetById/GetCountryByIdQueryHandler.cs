@@ -1,6 +1,7 @@
 ﻿using ChallengeNubimetrics.Application.Extensions;
 using ChallengeNubimetrics.Application.Models.Countries;
 using ChallengeNubimetrics.Application.Queries.Countries.GetById;
+using ChallengeNubimetrics.Application.Services;
 using MediatR;
 using Newtonsoft.Json;
 using Serilog;
@@ -14,11 +15,15 @@ namespace ChallengeNubimetrics.Application.Handlers.Countries.GetById
     {
         private readonly IHttpClientFactory _httpFactory;
         private readonly ILogger _logger;
+        private readonly IProducerService _producerService;
 
-        public GetCountryByIdQueryHandler(IHttpClientFactory httpFactory, ILogger logger)
+        public GetCountryByIdQueryHandler(IHttpClientFactory httpFactory,
+                                          ILogger logger,
+                                          IProducerService producerService)
         {
             _httpFactory = httpFactory;
             _logger = logger;
+            _producerService = producerService;
         }
 
 
@@ -37,6 +42,8 @@ namespace ChallengeNubimetrics.Application.Handlers.Countries.GetById
 
             var jsonResult = await serviceResult.Content.ReadAsStringAsync();
             var response = JsonConvert.DeserializeObject<CountryDto>(jsonResult);
+
+            await _producerService.Produce(response, "test-queue");
 
             return new GetCountryByIdResponse() { Data = response };
         }

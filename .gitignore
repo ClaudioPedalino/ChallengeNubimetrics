@@ -363,3 +363,5 @@ MigrationBackup/
 FodyWeavers.xsd
 /ChallengeNubimetrics.Api/logs20210617.txt
 /.sonarqube
+/ChallengeNubimetrics.Api/_logs
+/ChallengeNubimetrics.Api/_logs/*.csv

@@ -10,6 +10,7 @@ namespace ChallengeNubimetrics.Api.Registrations
         public static IServiceCollection AddServices(this IServiceCollection services, IConfiguration _configuration)
         {
             services.AddTransient<IUserService, UserService>();
+            services.AddTransient<IProducerService, ProducerService>();
 
             return services;
         }

@@ -1,10 +1,14 @@
 ﻿using ChallengeNubimetrics.Application.Extensions;
 using ChallengeNubimetrics.Application.Models.Search;
 using ChallengeNubimetrics.Application.Queries.Search;
+using ChallengeNubimetrics.Application.Services;
 using MediatR;
+using Newtonsoft.Json;
+using RabbitMQ.Client;
 using Serilog;
 using System;
 using System.Net.Http;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
@@ -15,11 +19,15 @@ namespace ChallengeNubimetrics.Application.Handlers.Search
     {
         private readonly IHttpClientFactory _httpFactory;
         private readonly ILogger _logger;
+        private readonly IProducerService _producerService;
 
-        public GetBySearchQueryHandler(IHttpClientFactory httpFactory, ILogger logger)
+        public GetBySearchQueryHandler(IHttpClientFactory httpFactory,
+                                       ILogger logger,
+                                       IProducerService producerService)
         {
             _httpFactory = httpFactory;
             _logger = logger;
+            _producerService = producerService;
         }
 
         public async Task<GetBySearchResponse> Handle(GetBySearchQuery request, CancellationToken cancellationToken)
@@ -33,6 +41,8 @@ namespace ChallengeNubimetrics.Application.Handlers.Search
                 serviceResult.ExecuteMeliLogging(_logger, client.BaseAddress.ToString());
 
             var response = await serviceResult.ReadResponse<SearchDto>();
+
+            await _producerService.Produce(response, "test-queue");
 
             return new GetBySearchResponse() { Data = response };
         }

@@ -50,6 +50,7 @@ namespace ChallengeNubimetrics.Api.Registrations
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "API Challenge Nubimetrics");
+                /// c.RoutePrefix = string.Empty;
             });
 
             return app;
