@@ -16,12 +16,12 @@ namespace ChallengeNubimetrics.Application.Handlers.Countries.GetAll
     {
         private readonly IHttpClientFactory _httpFactory;
         private readonly ILogger _logger;
-        private readonly IProducerService _producerService;
+        private readonly IQueueService _producerService;
         /// private readonly AsyncRetryPolicy _retryPolicy;
 
         public GetAllCountryQueryHandler(IHttpClientFactory httpFactory,
                                          ILogger logger,
-                                         IProducerService producerService)
+                                         IQueueService producerService)
         {
             _httpFactory = httpFactory;
             _logger = logger;

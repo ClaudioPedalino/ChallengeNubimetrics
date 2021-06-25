@@ -16,9 +16,9 @@ namespace ChallengeNubimetrics.Api.Controllers
     public class CurrencyController : ControllerBase
     {
         private readonly IMediator _mediator;
-        private readonly IProducerService _producerService;
+        private readonly IQueueService _producerService;
 
-        public CurrencyController(IMediator mediator, IProducerService producerService)
+        public CurrencyController(IMediator mediator, IQueueService producerService)
         {
             _mediator = mediator;
             _producerService = producerService;

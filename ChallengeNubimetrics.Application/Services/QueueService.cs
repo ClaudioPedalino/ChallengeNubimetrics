@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace ChallengeNubimetrics.Application.Services
 {
-    public class ProducerService : IProducerService
+    public class QueueService : IQueueService
     {
         private readonly IConfiguration _configuration;
 
-        public ProducerService(IConfiguration configuration)
+        public QueueService(IConfiguration configuration)
         {
             _configuration = configuration;
         }
@@ -21,35 +21,35 @@ namespace ChallengeNubimetrics.Application.Services
 
         public Task Produce<T>(T message, string queueName)
         {
-            var factory = new ConnectionFactory()
-            {
-                Uri = new Uri(_configuration.GetValue<string>("RabbitMQ:Hostname"))
-            };
+            SetConnection(out IConnection connection, out IModel channel);
 
-            using var connection = factory.CreateConnection();
-            using var channel = connection.CreateModel();
-            
             channel.QueueDeclare(queueName,
                                  durable: true,
                                  exclusive: false,
                                  autoDelete: false,
                                  arguments: null);
-            
+
             var body = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(message));
             channel.BasicPublish("", queueName, null, body);
-            
+
             return Task.CompletedTask;
         }
 
 
-        public async Task Consume(string queueName)
+        private void SetConnection(out IConnection connection, out IModel channel)
         {
             var factory = new ConnectionFactory()
             {
                 Uri = new Uri(_configuration.GetValue<string>("RabbitMQ:Hostname"))
             };
-            using var connection = factory.CreateConnection();
-            using var channel = connection.CreateModel();
+            connection = factory.CreateConnection();
+            channel = connection.CreateModel();
+        }
+
+        public async Task Consume(string queueName)
+        {
+            SetConnection(out IConnection connection, out IModel channel);
+
             channel.QueueDeclare(queueName,
                                  durable: true,
                                  exclusive: false,
@@ -57,8 +57,6 @@ namespace ChallengeNubimetrics.Application.Services
                                  arguments: null);
 
             var consumer = new EventingBasicConsumer(channel);
-
-            channel.BasicConsume(queueName, true, consumer);
 
             consumer.Received += (sender, e) =>
             {
@@ -70,6 +68,7 @@ namespace ChallengeNubimetrics.Application.Services
                 Console.ResetColor();
             };
 
+            channel.BasicConsume(queueName, true, consumer);
         }
     }
 }

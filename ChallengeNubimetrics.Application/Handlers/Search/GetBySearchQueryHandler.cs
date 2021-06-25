@@ -19,11 +19,11 @@ namespace ChallengeNubimetrics.Application.Handlers.Search
     {
         private readonly IHttpClientFactory _httpFactory;
         private readonly ILogger _logger;
-        private readonly IProducerService _producerService;
+        private readonly IQueueService _producerService;
 
         public GetBySearchQueryHandler(IHttpClientFactory httpFactory,
                                        ILogger logger,
-                                       IProducerService producerService)
+                                       IQueueService producerService)
         {
             _httpFactory = httpFactory;
             _logger = logger;
