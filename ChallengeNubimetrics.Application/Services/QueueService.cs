@@ -31,40 +31,41 @@ namespace ChallengeNubimetrics.Application.Services
             channel.BasicPublish("", queueName, null, body);
 
             return Task.CompletedTask;
+        }
 
-            private void SetConnection(out IConnection connection, out IModel channel)
+        private void SetConnection(out IConnection connection, out IModel channel)
+        {
+            var factory = new ConnectionFactory()
             {
-                var factory = new ConnectionFactory()
-                {
-                    Uri = new Uri(_configuration.GetValue<string>("RabbitMQ:Hostname"))
-                };
-                connection = factory.CreateConnection();
-                channel = connection.CreateModel();
-            }
+                Uri = new Uri(_configuration.GetValue<string>("RabbitMQ:Hostname"))
+            };
+            connection = factory.CreateConnection();
+            channel = connection.CreateModel();
+        }
 
-            public async Task Consume(string queueName)
+        public async Task Consume(string queueName)
+        {
+            SetConnection(out IConnection connection, out IModel channel);
+
+            channel.QueueDeclare(queueName,
+                                 durable: true,
+                                 exclusive: false,
+                                 autoDelete: false,
+                                 arguments: null);
+
+            var consumer = new EventingBasicConsumer(channel);
+
+            consumer.Received += (sender, e) =>
             {
-                SetConnection(out IConnection connection, out IModel channel);
+                var body = e.Body.ToArray();
+                var message = Encoding.UTF8.GetString(body);
 
-                channel.QueueDeclare(queueName,
-                                     durable: true,
-                                     exclusive: false,
-                                     autoDelete: false,
-                                     arguments: null);
+                Console.BackgroundColor = ConsoleColor.DarkYellow;
+                Console.WriteLine(message);
+                Console.ResetColor();
+            };
 
-                var consumer = new EventingBasicConsumer(channel);
-
-                consumer.Received += (sender, e) =>
-                {
-                    var body = e.Body.ToArray();
-                    var message = Encoding.UTF8.GetString(body);
-
-                    Console.BackgroundColor = ConsoleColor.DarkYellow;
-                    Console.WriteLine(message);
-                    Console.ResetColor();
-                };
-
-                channel.BasicConsume(queueName, true, consumer);
-            }
+            channel.BasicConsume(queueName, true, consumer);
         }
     }
+}
