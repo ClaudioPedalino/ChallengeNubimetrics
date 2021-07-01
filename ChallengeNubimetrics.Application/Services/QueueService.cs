@@ -15,57 +15,57 @@ namespace ChallengeNubimetrics.Application.Services
         public QueueService(IConfiguration configuration)
         {
             _configuration = configuration;
-        }
 
-        public Task Produce<T>(T message, string queueName)
-        {
-            SetConnection(out IConnection connection, out IModel channel);
 
-            channel.QueueDeclare(queueName,
-                                 durable: true,
-                                 exclusive: false,
-                                 autoDelete: false,
-                                 arguments: null);
-
-            var body = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(message));
-            channel.BasicPublish("", queueName, null, body);
-
-            return Task.CompletedTask;
-        }
-
-        private void SetConnection(out IConnection connection, out IModel channel)
-        {
-            var factory = new ConnectionFactory()
+            public Task Produce<T>(T message, string queueName)
             {
-                Uri = new Uri(_configuration.GetValue<string>("RabbitMQ:Hostname"))
-            };
-            connection = factory.CreateConnection();
-            channel = connection.CreateModel();
-        }
+                SetConnection(out IConnection connection, out IModel channel);
 
-        public async Task Consume(string queueName)
-        {
-            SetConnection(out IConnection connection, out IModel channel);
+                channel.QueueDeclare(queueName,
+                                     durable: true,
+                                     exclusive: false,
+                                     autoDelete: false,
+                                     arguments: null);
 
-            channel.QueueDeclare(queueName,
-                                 durable: true,
-                                 exclusive: false,
-                                 autoDelete: false,
-                                 arguments: null);
+                var body = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(message));
+                channel.BasicPublish("", queueName, null, body);
 
-            var consumer = new EventingBasicConsumer(channel);
+                return Task.CompletedTask;
+            }
 
-            consumer.Received += (sender, e) =>
+            private void SetConnection(out IConnection connection, out IModel channel)
             {
-                var body = e.Body.ToArray();
-                var message = Encoding.UTF8.GetString(body);
+                var factory = new ConnectionFactory()
+                {
+                    Uri = new Uri(_configuration.GetValue<string>("RabbitMQ:Hostname"))
+                };
+                connection = factory.CreateConnection();
+                channel = connection.CreateModel();
+            }
 
-                Console.BackgroundColor = ConsoleColor.DarkYellow;
-                Console.WriteLine(message);
-                Console.ResetColor();
-            };
+            public async Task Consume(string queueName)
+            {
+                SetConnection(out IConnection connection, out IModel channel);
 
-            channel.BasicConsume(queueName, true, consumer);
+                channel.QueueDeclare(queueName,
+                                     durable: true,
+                                     exclusive: false,
+                                     autoDelete: false,
+                                     arguments: null);
+
+                var consumer = new EventingBasicConsumer(channel);
+
+                consumer.Received += (sender, e) =>
+                {
+                    var body = e.Body.ToArray();
+                    var message = Encoding.UTF8.GetString(body);
+
+                    Console.BackgroundColor = ConsoleColor.DarkYellow;
+                    Console.WriteLine(message);
+                    Console.ResetColor();
+                };
+
+                channel.BasicConsume(queueName, true, consumer);
+            }
         }
     }
-}
