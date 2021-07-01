@@ -30,7 +30,6 @@ namespace ChallengeNubimetrics.Application.Handlers.Currencies.GetAll
             _configuration = configuration;
         }
 
-
         public async Task<IEnumerable<GetAllCurrencyResponse>> Handle(GetAllCurrencyQuery request, CancellationToken cancellationToken)
         {
             var currencyServiceClient = _httpFactory.CreateClient("MELI_CurrenciesServiceUrl");
@@ -44,7 +43,6 @@ namespace ChallengeNubimetrics.Application.Handlers.Currencies.GetAll
             return resultCurrencies;
         }
 
-
         private void SaveJsonFileResult(List<GetAllCurrencyResponse> resultCurrencies, IConfiguration configuration)
         {
             var filePath = Directory.GetCurrentDirectory()
@@ -55,10 +53,9 @@ namespace ChallengeNubimetrics.Application.Handlers.Currencies.GetAll
             File.WriteAllText(filePath, jsonData);
         }
 
-
         private async Task SetDolarConversion(List<GetAllCurrencyResponse> resultCurrencies, HttpClient conversionServiceClient)
         {
-            // Average response time => 290 milisecs  ;) 
+            // Average response time => 290 milisecs  ;)
             //Parallel.ForEach(resultCurrencies, async currency =>
             //{
             //    string url = BuildQueryString(currency.Id, conversionServiceClient);
@@ -76,7 +73,6 @@ namespace ChallengeNubimetrics.Application.Handlers.Currencies.GetAll
             //    currency.Ratio = conversionResult.Ratio != default ? conversionResult.Ratio.ToString() : default;
             //});
 
-
             foreach (var currency in resultCurrencies)
             {
                 string url = BuildQueryString(currency.Id, conversionServiceClient);
@@ -92,12 +88,10 @@ namespace ChallengeNubimetrics.Application.Handlers.Currencies.GetAll
             }
         }
 
-
         private string GetCSVPath() =>
             Directory.GetCurrentDirectory()
             + _configuration.GetSection("LoggingFile:CsvFilePath").Value
             + FileFormatDictionary.FileFormats[FileFormat.CSV];
-
 
         private async Task<List<GetAllCurrencyResponse>> GetCurrenciesFromMeliService(HttpClient currencyServiceClient)
         {
@@ -113,7 +107,6 @@ namespace ChallengeNubimetrics.Application.Handlers.Currencies.GetAll
             return currenciesResponse;
         }
 
-
         private string BuildQueryString(string currencyIdFrom, HttpClient client, string currencyIdTo = "USD")
         {
             var builder = new UriBuilder(client.BaseAddress) { Port = -1 };
@@ -123,6 +116,5 @@ namespace ChallengeNubimetrics.Application.Handlers.Currencies.GetAll
             builder.Query = query.ToString();
             return builder.ToString();
         }
-
     }
 }

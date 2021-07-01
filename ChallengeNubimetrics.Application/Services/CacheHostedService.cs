@@ -27,7 +27,6 @@ namespace ChallengeNubimetrics.Application.Services
             Printer.Print("CACHE WAS RECYCLED", ConsoleColor.Cyan);
         }
 
-
         public Task StartAsync(CancellationToken cancellationToken)
         {
             bool isDevelopment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Development";

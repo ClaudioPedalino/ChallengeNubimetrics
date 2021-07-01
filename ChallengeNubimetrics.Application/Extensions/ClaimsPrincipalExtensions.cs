@@ -7,6 +7,5 @@ namespace ChallengeNubimetrics.Application.Extensions
     {
         public static string GetUserId(this ClaimsPrincipal claimsPrincipal)
             => claimsPrincipal.Claims.FirstOrDefault(i => i.Type == "id").Value;
-
     }
 }

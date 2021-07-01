@@ -12,6 +12,7 @@ namespace ChallengeNubimetrics.Application.Commands.Users
 
         [EmailAddress]
         public string Email { get; init; }
+
         public string Password { get; init; }
     }
 }

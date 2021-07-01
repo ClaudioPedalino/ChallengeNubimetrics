@@ -15,7 +15,6 @@ namespace ChallengeNubimetrics.Application.Extensions
             return JsonConvert.DeserializeObject<T>(jsonResult);
         }
 
-
         public static void ExecuteMeliLogging(this HttpResponseMessage httpMessage, ILogger logger, string url, bool throwEx = false)
         {
             if (httpMessage.StatusCode == HttpStatusCode.NotFound)

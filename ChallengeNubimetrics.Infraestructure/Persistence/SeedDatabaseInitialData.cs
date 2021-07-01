@@ -9,8 +9,6 @@ namespace ChallengeNubimetrics.Infraestructure.Persistence
     {
         public static void SeedUsers(UserManager<User> _userManager)
         {
-            var testPassword = "Alagrandelepusecuca#123";
-
             var seedUsers = new List<User>()
             {
                 new User{ FirstName = "Rocket", LastName = "Raccoon", Email = "rocketraccoon@gmail.com", UserName = "rocketraccoon@gmail.com", CreatedAt = DateTime.UtcNow.AddHours(-3)},
@@ -19,7 +17,7 @@ namespace ChallengeNubimetrics.Infraestructure.Persistence
 
             foreach (var user in seedUsers)
             {
-                _ = _userManager.CreateAsync(user, testPassword).Result;
+                _ = _userManager.CreateAsync(user, "Alagrandelepusecuca#123").Result;
             }
         }
     }

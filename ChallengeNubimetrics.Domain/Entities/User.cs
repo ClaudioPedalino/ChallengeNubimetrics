@@ -12,6 +12,4 @@ namespace ChallengeNubimetrics.Domain.Entities
         public DateTime? DeleteAt { get; set; }
         public string DeleteBy { get; set; }
     }
-
-
 }

@@ -21,7 +21,6 @@ namespace ChallengeNubimetrics.Infraestructure.Repositories
                 .Where(x => x.DeleteAt == null)
                 .AsNoTracking();
 
-
         public async Task UpdateAsync(User entity)
         {
             _context.Users.Update(entity);

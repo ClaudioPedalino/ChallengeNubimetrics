@@ -20,16 +20,13 @@ namespace ChallengeNubimetrics.Api.Controllers
         public async Task<ActionResult> GetLiveAsync()
             => await CallHealthCheck("live", _configuration);
 
-
         [HttpGet("ready")]
         public async Task<ActionResult> GetReadyAsync()
             => await CallHealthCheck("ready", _configuration);
 
-
         [HttpGet("ui-data")]
         public async Task<ActionResult> GetUIDataAsync()
             => await CallHealthCheck("ui", _configuration);
-
 
         private async Task<ActionResult> CallHealthCheck(string param, IConfiguration _configuration)
         {

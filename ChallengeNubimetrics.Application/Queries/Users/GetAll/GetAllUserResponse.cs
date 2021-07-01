@@ -10,7 +10,6 @@ namespace ChallengeNubimetrics.Application.Queries.Users.GetAll
         public string Apellido { get; init; }
         public string Email { get; init; }
 
-
         private string GetDebuggerDisplay() => ToString();
     }
 }

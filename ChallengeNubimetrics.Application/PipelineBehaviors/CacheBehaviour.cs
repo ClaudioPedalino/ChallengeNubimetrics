@@ -24,7 +24,6 @@ namespace ChallengeNubimetrics.Application.PipelineBehaviors
         {
             var requestName = request.GetType();
 
-
             /// If cached
             TResponse response;
             if (_cache.TryGetValue(request.CacheKey, out response))

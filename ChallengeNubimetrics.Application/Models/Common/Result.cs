@@ -11,7 +11,6 @@
         public virtual bool HasErrors { get; set; }
         public virtual string Message { get; set; }
 
-
         public static Result Success(string message)
             => new Result() { HasErrors = false, Message = message };
 

@@ -12,6 +12,5 @@ namespace ChallengeNubimetrics.Application.Helpers
                 DateTime.UtcNow,
                 TimeZoneInfo.FindSystemTimeZoneById(TIMEZONE_USAGE)
                 );
-
     }
 }

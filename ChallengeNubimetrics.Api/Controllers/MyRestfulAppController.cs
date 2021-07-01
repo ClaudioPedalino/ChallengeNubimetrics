@@ -30,7 +30,6 @@ namespace ChallengeNubimetrics.Api.Controllers
             _config = config;
         }
 
-
         [HttpGet("paises")]
         [ProducesResponseType(typeof(GetAllCountryResponse), 200)]
         [ProducesResponseType(typeof(BadRequestResult), 400)]
@@ -50,9 +49,7 @@ namespace ChallengeNubimetrics.Api.Controllers
                     ? Result.Error(ex.Message)
                     : Result.Error("Hubo un problema en la api :)"));
             }
-
         }
-
 
         [HttpGet("paises/{paisId}")]
         [ProducesResponseType(typeof(GetCountryByIdResponse), 200)]
@@ -71,7 +68,6 @@ namespace ChallengeNubimetrics.Api.Controllers
                 ? Unauthorized("Desafío 1: Consideraciones => Error 401 unauthorized de http para casos \"BR\" y \"CO\"")
                 : Ok(await _mediator.Send(new GetCountryByIdQuery(paisId)));
         }
-
 
         [HttpGet("busqueda/{termino}")]
         [ProducesResponseType(typeof(GetCountryByIdResponse), 200)]

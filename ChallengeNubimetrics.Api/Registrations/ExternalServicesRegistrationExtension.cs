@@ -32,10 +32,7 @@ namespace ChallengeNubimetrics.Api.Registrations
                 .AddPolicyHandler(GetRetryPolicy(_configuration));
 
             return services;
-
-
         }
-
 
         private static IAsyncPolicy<HttpResponseMessage> GetRetryPolicy(IConfiguration _configuration)
             => HttpPolicyExtensions

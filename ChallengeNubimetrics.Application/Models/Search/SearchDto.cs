@@ -142,7 +142,5 @@ namespace ChallengeNubimetrics.Application.Models.Search
 
         [JsonProperty("permalink")]
         public string Permalink { get; init; }
-
     }
-
 }

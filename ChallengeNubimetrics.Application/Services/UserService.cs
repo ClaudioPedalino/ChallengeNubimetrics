@@ -49,7 +49,6 @@ namespace ChallengeNubimetrics.Application.Services
             _mapper = mapper;
         }
 
-
         public async Task<PaginatedResult<GetAllUserResponse>> GetAllAsync(GetAllUserQuery request)
         {
             var users = _userRepository.GetAll();
@@ -77,7 +76,6 @@ namespace ChallengeNubimetrics.Application.Services
                     data: response);
         }
 
-
         public async Task<AuthenticationResult> LoginAsync(CreateLoginUserCommand request)
         {
             var user = await _userManager.FindByEmailAsync(request.Email);
@@ -90,7 +88,6 @@ namespace ChallengeNubimetrics.Application.Services
 
             return GenerateAuthResult(user);
         }
-
 
         public async Task<AuthenticationResult> RegisterAsync(CreateRegisterUserCommand request)
         {
@@ -112,7 +109,6 @@ namespace ChallengeNubimetrics.Application.Services
 
             return GenerateAuthResult(newUser);
         }
-
 
         public async Task<Result> DeleteAsync(DeleteUserCommand request)
         {
@@ -140,7 +136,6 @@ namespace ChallengeNubimetrics.Application.Services
 
             return Result.Success($"User {user.UserName} deleted succesfully");
         }
-
 
         private AuthenticationResult GenerateAuthResult(IdentityUser newUser)
         {
@@ -172,12 +167,10 @@ namespace ChallengeNubimetrics.Application.Services
             };
         }
 
-
         private AuthenticationResult ValidateUserException(string validationMessage)
             => new AuthenticationResult
             {
                 ErrorMessages = new[] { validationMessage }
             };
-
     }
 }

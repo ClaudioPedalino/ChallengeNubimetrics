@@ -36,6 +36,5 @@ namespace ChallengeNubimetrics.Application.Queries.Search
 
             return response;
         }
-
     }
 }

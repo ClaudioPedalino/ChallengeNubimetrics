@@ -23,6 +23,7 @@ namespace ChallengeNubimetrics.Application.Models.Countries
 
         [JsonProperty("geo_information")]
         public GeoInformationDto GeoInformation { get; init; }
+
         public List<StateDto> States { get; init; }
     }
 

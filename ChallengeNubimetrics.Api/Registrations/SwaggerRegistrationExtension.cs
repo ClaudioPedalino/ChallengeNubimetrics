@@ -43,7 +43,6 @@ namespace ChallengeNubimetrics.Api.Registrations
             return services;
         }
 
-
         public static IApplicationBuilder UseSwagger(this IApplicationBuilder app)
         {
             SwaggerBuilderExtensions.UseSwagger(app);

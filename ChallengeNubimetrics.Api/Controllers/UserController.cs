@@ -24,8 +24,6 @@ namespace ChallengeNubimetrics.Api.Controllers
             _userService = userService;
         }
 
-
-
         [HttpGet("users")]
         [ProducesResponseType(typeof(PaginatedResult<GetAllUserResponse>), 200)]
         [ProducesResponseType(typeof(BadRequestResult), 400)]
@@ -36,7 +34,6 @@ namespace ChallengeNubimetrics.Api.Controllers
         {
             return Ok(await _userService.GetAllAsync(request));
         }
-
 
         [HttpPost("login")]
         [ProducesResponseType(typeof(AuthenticationResult), 200)]
@@ -53,7 +50,6 @@ namespace ChallengeNubimetrics.Api.Controllers
             return Ok(response);
         }
 
-
         [HttpPost("register")]
         [ProducesResponseType(typeof(AuthenticationResult), 200)]
         [ProducesResponseType(typeof(BadRequestResult), 400)]
@@ -68,7 +64,6 @@ namespace ChallengeNubimetrics.Api.Controllers
 
             return Ok(response);
         }
-
 
         [HttpDelete("delete")]
         [ProducesResponseType(typeof(Result), 200)]

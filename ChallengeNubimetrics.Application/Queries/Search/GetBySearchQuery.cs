@@ -14,5 +14,4 @@ namespace ChallengeNubimetrics.Application.Queries.Search
 
         public string CacheKey => $"{GetType().Name}-{Search}";
     }
-
 }
