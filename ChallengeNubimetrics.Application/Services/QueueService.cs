@@ -3,7 +3,6 @@ using Newtonsoft.Json;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using System;
-using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -17,7 +16,6 @@ namespace ChallengeNubimetrics.Application.Services
         {
             _configuration = configuration;
         }
-
 
         public Task Produce<T>(T message, string queueName)
         {
@@ -34,7 +32,6 @@ namespace ChallengeNubimetrics.Application.Services
 
             return Task.CompletedTask;
         }
-
 
         private void SetConnection(out IConnection connection, out IModel channel)
         {

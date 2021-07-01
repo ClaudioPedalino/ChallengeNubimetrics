@@ -26,7 +26,6 @@ namespace ChallengeNubimetrics.Application.Handlers.Countries.GetById
             _producerService = producerService;
         }
 
-
         public async Task<GetCountryByIdResponse> Handle(GetCountryByIdQuery request, CancellationToken cancellationToken)
         {
             var client = _httpFactory.CreateClient("MELI_CountriesServiceUrl");
@@ -47,6 +46,5 @@ namespace ChallengeNubimetrics.Application.Handlers.Countries.GetById
 
             return new GetCountryByIdResponse() { Data = response };
         }
-
     }
 }

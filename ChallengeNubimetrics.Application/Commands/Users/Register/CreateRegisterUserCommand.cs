@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace ChallengeNubimetrics.Application.Commands.Users
+namespace ChallengeNubimetrics.Application.Commands.Users.Register
 {
     public class CreateRegisterUserCommand
     {

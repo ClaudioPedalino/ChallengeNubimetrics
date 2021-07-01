@@ -3,12 +3,9 @@ using ChallengeNubimetrics.Application.Models.Search;
 using ChallengeNubimetrics.Application.Queries.Search;
 using ChallengeNubimetrics.Application.Services;
 using MediatR;
-using Newtonsoft.Json;
-using RabbitMQ.Client;
 using Serilog;
 using System;
 using System.Net.Http;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
@@ -47,7 +44,6 @@ namespace ChallengeNubimetrics.Application.Handlers.Search
             return new GetBySearchResponse() { Data = response };
         }
 
-
         private static string GetQueryString(GetBySearchQuery request, HttpClient client)
         {
             var builder = new UriBuilder(client.BaseAddress) { Port = -1 };
@@ -57,5 +53,4 @@ namespace ChallengeNubimetrics.Application.Handlers.Search
             return builder.ToString();
         }
     }
-
 }

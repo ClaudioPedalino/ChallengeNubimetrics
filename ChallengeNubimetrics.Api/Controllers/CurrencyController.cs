@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
-
 namespace ChallengeNubimetrics.Api.Controllers
 {
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
@@ -24,7 +23,6 @@ namespace ChallengeNubimetrics.Api.Controllers
             _producerService = producerService;
         }
 
-
         [HttpGet]
         [ProducesResponseType(typeof(GetAllCurrencyResponse), 200)]
         [ProducesResponseType(typeof(BadRequestResult), 400)]
@@ -36,7 +34,6 @@ namespace ChallengeNubimetrics.Api.Controllers
             return Ok(await _mediator.Send(new GetAllCurrencyQuery()));
         }
 
-
         [HttpGet("consume")]
         [AllowAnonymous]
         public async Task<IActionResult> Consume()
@@ -44,6 +41,5 @@ namespace ChallengeNubimetrics.Api.Controllers
             await _producerService.Consume("test-queue");
             return Ok();
         }
-
     }
 }

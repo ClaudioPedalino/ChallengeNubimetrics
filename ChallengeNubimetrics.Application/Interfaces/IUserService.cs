@@ -1,6 +1,8 @@
 ﻿using ChallengeNubimetrics.Application.Auth;
 using ChallengeNubimetrics.Application.Commands.Users;
 using ChallengeNubimetrics.Application.Commands.Users.Delete;
+using ChallengeNubimetrics.Application.Commands.Users.Login;
+using ChallengeNubimetrics.Application.Commands.Users.Register;
 using ChallengeNubimetrics.Application.Models.Common;
 using ChallengeNubimetrics.Application.Queries.Users.GetAll;
 using System.Threading.Tasks;

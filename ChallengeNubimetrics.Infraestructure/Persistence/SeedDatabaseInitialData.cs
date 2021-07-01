@@ -21,5 +21,4 @@ namespace ChallengeNubimetrics.Infraestructure.Persistence
             }
         }
     }
-
 }

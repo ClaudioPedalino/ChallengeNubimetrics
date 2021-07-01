@@ -31,7 +31,6 @@ namespace ChallengeNubimetrics.Application.Handlers.Countries.GetAll
             ///                       sleepDurationProvider: times => TimeSpan.FromMilliseconds(times * 100));
         }
 
-
         public async Task<IEnumerable<GetAllCountryResponse>> Handle(GetAllCountryQuery request, CancellationToken cancellationToken)
         {
             var client = _httpFactory.CreateClient("MELI_CountriesServiceUrl");
@@ -41,7 +40,6 @@ namespace ChallengeNubimetrics.Application.Handlers.Countries.GetAll
             if (!serviceResult.IsSuccessStatusCode)
                 serviceResult.ExecuteMeliLogging(_logger, client.BaseAddress.ToString(), throwEx: true);
 
-
             var jsonResult = await serviceResult.Content.ReadAsStringAsync();
             var response = JsonConvert.DeserializeObject<List<GetAllCountryResponse>>(jsonResult);
 
@@ -49,8 +47,8 @@ namespace ChallengeNubimetrics.Application.Handlers.Countries.GetAll
 
             return response.OrderBy(x => x.Name);
 
-
             #region using polly handling scenario by scneario
+
             ///return await _retryPolicy.ExecuteAsync(async () =>
             ///{
             ///    using var serviceResult = await client.GetAsync(client.BaseAddress);
@@ -66,8 +64,8 @@ namespace ChallengeNubimetrics.Application.Handlers.Countries.GetAll
 
             ///    return response.OrderBy(x => x.Name);
             ///});
-            #endregion
+
+            #endregion using polly handling scenario by scneario
         }
     }
-
 }

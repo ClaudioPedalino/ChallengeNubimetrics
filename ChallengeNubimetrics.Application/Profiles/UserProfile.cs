@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using ChallengeNubimetrics.Application.Commands.Users;
+using ChallengeNubimetrics.Application.Commands.Users.Register;
 using ChallengeNubimetrics.Application.Helpers;
 using ChallengeNubimetrics.Application.Queries.Users.GetAll;
 using ChallengeNubimetrics.Domain.Entities;

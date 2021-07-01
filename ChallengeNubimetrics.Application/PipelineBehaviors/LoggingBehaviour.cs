@@ -5,7 +5,7 @@ using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace ChallengeNubimetrics.Application.Queries.Search
+namespace ChallengeNubimetrics.Application.PipelineBehaviors
 {
     public class LoggingBehaviour<TRquest, TResponse> : IPipelineBehavior<TRquest, TResponse>
         where TRquest : IRequest<TResponse>

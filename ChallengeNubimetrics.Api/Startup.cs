@@ -1,8 +1,5 @@
 using ChallengeNubimetrics.Api.Registrations;
-using ChallengeNubimetrics.Application.PipelineBehaviors;
 using ChallengeNubimetrics.Application.Profiles;
-using ChallengeNubimetrics.Application.Queries.Search;
-using ChallengeNubimetrics.Application.Services;
 using ChallengeNubimetrics.Domain.Entities;
 using ChallengeNubimetrics.Infraestructure.Persistence;
 using MediatR;
@@ -52,7 +49,6 @@ namespace ChallengeNubimetrics.Api
             ///services.AddHealthCheck(Configuration);
         }
 
-
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, UserManager<User> userManager)
         {
@@ -78,7 +74,5 @@ namespace ChallengeNubimetrics.Api
 
             ///app.UseHealhtChecks();
         }
-
-
     }
 }
